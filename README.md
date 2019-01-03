@@ -3,7 +3,7 @@
 Yet another netstring implementation! Simple usage:
 
 
-``` golang
+```go
 	payload := []byte("12:Hello world!,0:,13:Goodbye world,")
 	res, err := netstring.Decode(payload)
 	// res is not the list of bytes containing:
