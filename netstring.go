@@ -98,3 +98,16 @@ func (self *NetString) DecodeString() []string {
 	}
 	return res
 }
+
+func Decode(in []byte) ([][]byte, error) {
+	ns := NewNetBytes(in)
+	out := ns.Decode()
+	return out, ns.err
+}
+
+
+func Encode(items ...[]byte) ([]byte, error) {
+	ns := NewNetBytes()
+	ns.Encode(items...)
+	return ns.buffer.Bytes(), ns.err
+}
