@@ -99,6 +99,10 @@ func (self *NetString) DecodeString() []string {
 	return res
 }
 
+func (self *NetString) Bytes() []byte {
+	return self.buffer.Bytes()
+}
+
 func Decode(in []byte) ([][]byte, error) {
 	ns := NewNetBytes(in)
 	out := ns.Decode()
@@ -109,5 +113,11 @@ func Decode(in []byte) ([][]byte, error) {
 func Encode(items ...[]byte) ([]byte, error) {
 	ns := NewNetBytes()
 	ns.Encode(items...)
+	return ns.buffer.Bytes(), ns.err
+}
+
+func EncodeString(items ...string) ([]byte, error) {
+	ns := NewNetString()
+	ns.EncodeString(items...)
 	return ns.buffer.Bytes(), ns.err
 }
