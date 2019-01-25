@@ -109,6 +109,12 @@ func Decode(in []byte) ([][]byte, error) {
 	return out, ns.err
 }
 
+func DecodeString(in []byte) ([]string, error) {
+	ns := NewNetBytes(in)
+	out := ns.DecodeString()
+	return out, ns.err
+}
+
 
 func Encode(items ...[]byte) ([]byte, error) {
 	ns := NewNetBytes()
